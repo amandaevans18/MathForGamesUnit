@@ -2,7 +2,6 @@
 struct vec3
 {
 	float const THRESHOLD = .5;
-public:
 	float x, y, z;
 
 	vec3();
