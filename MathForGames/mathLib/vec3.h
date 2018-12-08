@@ -1,4 +1,6 @@
 #pragma once
+#include "utils.h"
+
 struct vec3
 {
 	float const THRESHOLD = .5;

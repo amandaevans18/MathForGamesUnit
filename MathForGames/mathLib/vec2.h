@@ -1,4 +1,5 @@
 #pragma once
+#include "utils.h"
 //anything w/out comments still needs to be completed
 struct vec2
 {
@@ -8,19 +9,27 @@ struct vec2
 	vec2();
 	vec2(float _x, float _y);
 
-
+//
 float magnitude() const;
+//
 float dot(const vec2 &rhs) const;
 
+//
 vec2 &normalize();
+//
 vec2 getNormalized() const;
 
+//
 vec2 &scale(const vec2 &rhs);
+//
 vec2 getScaled(const vec2 &rhs) const;
 
+//
 vec2 getPerpCW() const;
+//
 vec2 getPerpCCW() const;
 
+//
 float angleBetween(const vec2 &rhs) const;
 
 //Operator to add a vec2 to another vec2 ,returns a vec2
