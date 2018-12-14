@@ -1,10 +1,10 @@
 #pragma once
 //defined as Pi
-const double PI;
+const float PI = 3.14159;
 //angle measure expressed in degrees to get equivalent in radians 
-const double DEG_TO_RAD;
+const float DEG_TO_RAD = 0.017;
 //angle measure expressed in radians to get its equivalent in degrees
-const double RAD_TO_DEG;
+const float RAD_TO_DEG = 57.29;
 
 //returns the max of two ints
 int max(int a, int b);
@@ -16,7 +16,7 @@ int min(int a, int b);
 int clamp(int value, int min, int max);
 
 //returns the absolute value of val
-int abs(int val);
+int myAbs(int val);
 
 //returns base to the power of exp
 int pow(int base, int power);

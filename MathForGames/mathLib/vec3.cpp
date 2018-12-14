@@ -23,12 +23,16 @@ float vec3::magnitude() const
 
 float vec3::dot(const vec3 & rhs) const
 {
-	return 0.0f;
+	return (x*rhs.x)+(y*rhs.y)+(z*rhs.z);
 }
 
 vec3 vec3::cross(const vec3 & rhs) const
 {
-	return vec3();
+	vec3 temp;
+	temp.x = (y * rhs.z) - (z * rhs.y);
+	temp.y = (z * rhs.x) - (x * rhs.z);
+	temp.z = (x * rhs.y) - (y * rhs.x);
+	return ;
 }
 
 vec3 & vec3::normalize()

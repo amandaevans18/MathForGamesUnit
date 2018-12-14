@@ -22,7 +22,7 @@ float vec2::magnitude() const
 
 float vec2::dot(const vec2 & rhs) const
 {
-	return 0.0f;
+	return (x * rhs.x)+(y * rhs.y);
 }
 
 vec2 & vec2::normalize()
@@ -43,7 +43,6 @@ vec2 & vec2::scale(const vec2 & rhs)
 vec2 vec2::getScaled(const vec2 & rhs) const
 {
 	vec2 temp(rhs.x, rhs.y);
-
 	return temp;
 }
 

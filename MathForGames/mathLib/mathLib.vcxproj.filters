@@ -47,5 +47,11 @@
     <ClInclude Include="Asserting.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Lerping.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BezierCurves.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

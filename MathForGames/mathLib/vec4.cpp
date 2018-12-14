@@ -15,12 +15,16 @@ float vec4::magnitude() const
 
 float vec4::dot(const vec4 & rhs) const
 {
-	return 0.0f;
+	return (x *rhs.x)+(y *rhs.y)+(z*rhs.z)+(w*rhs.w);
 }
 
 vec4 vec4::cross(const vec4 & rhs) const
 {
-	return vec4();
+	vec4 temp;
+	temp.x = (y * rhs.z * rhs.w) - (z * rhs.y * rhs.w);
+	temp.y = (z * rhs.x * rhs.w) - (x * rhs.z* rhs.w);
+	temp.z = (x * rhs.y * rhs.w) - (y * rhs.x * rhs.w);
+	return temp;
 }
 
 vec4 & vec4::normalize()

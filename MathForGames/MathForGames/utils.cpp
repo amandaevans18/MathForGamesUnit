@@ -26,7 +26,7 @@ int clamp(int value, int min, int max)
 	}
 }
 
-int abs(int val)
+int myAbs(int val)
 {
 	return 0 - val;
 }
