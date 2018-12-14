@@ -121,6 +121,7 @@
   <ItemGroup>
     <ClCompile Include="..\MathForGames\utils.cpp" />
     <ClCompile Include="Asserting.cpp" />
+    <ClCompile Include="Random.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="vec4.cpp" />
@@ -130,6 +131,7 @@
     <ClInclude Include="Asserting.h" />
     <ClInclude Include="BezierCurves.h" />
     <ClInclude Include="Lerping.h" />
+    <ClInclude Include="Random.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />
