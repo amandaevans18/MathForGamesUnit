@@ -20,20 +20,32 @@ void seedRand(int seedValue)
 
 int getRandSeed(int number)
 {
-	int seed;
-	std::string converter;
+	int seed = number;
+	int idx;
+	std::string converted;
 
 	seed = pow(seed, 2);
 
 	std::string convert = std::to_string(seed);
 	if (isPowerOfTwo(sizeof(convert))) 
 	{
-		
+		for (int i = 0; i < sizeof(convert); i++) 
+		{
+			if (i == 0 || i == sizeof(convert)) 
+			{
+				
+			}
+			else 
+			{
+				convert[i] += converted[idx];
+				idx++;
+			}
+		}
 	}
 	else
 	{
 
 	}
-	return;
+	return seed;
 }
 
