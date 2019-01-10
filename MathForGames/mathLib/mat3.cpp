@@ -186,39 +186,3 @@ vec2 mat3::operator*(const vec2 & rhs) const
 {
 	return vec2();
 }
-
-vec2 transform2d::localPosition() const
-{
-	return vec2();
-}
-
-float transform2d::localRotation() const
-{
-	return 0.0f;
-}
-
-vec2 transform2d::localScale() const
-{
-	return vec2();
-}
-
-void transform2d::setLocalPosition(const vec2 & newPos)
-{
-}
-
-void transform2d::setLocalRotation(const float newRot)
-{
-}
-
-void transform2d::setLocalScale(const vec2 & newScale)
-{
-}
-
-void transform2d::translate(const vec2 & offset)
-{
-}
-
-void transform2d::rotate(const float angle)
-{
-
-}

@@ -36,6 +36,9 @@
     <ClCompile Include="mat3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Transform2D.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\MathForGames\utils.h">
@@ -66,6 +69,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="mat4.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Transform2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

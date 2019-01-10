@@ -1,4 +1,5 @@
 #include "utils.h"
+#include<climits>
 
 int max(int a, int b)
 {
@@ -53,16 +54,25 @@ int nextPowerOfTwo(int val)
 
 bool isPowerOfTwo(int val)
 {
-	return false;
+	int counter = INT_MIN;
+	while (counter < INT_MAX)
+	{
+		if (val == counter)
+		{
+			return true;
+		}
+		counter += 2;
+	}
+		return false;
+	
 }
+
 
 float moveTowards(float current, float target, float maxDelta)
 {
-	
-	return 0.0f;
-}
-
-int log(int val)
-{
-	return 0;
+	while (current != target && current < maxDelta) 
+	{
+		current += 1.0f;
+	}
+	return current;
 }

@@ -29,5 +29,3 @@ bool isPowerOfTwo(int val);
 
 //moves the current value towards the target value. The maxium change should not exceed maxDelta.
 float moveTowards(float current, float target, float maxDelta);
-
-int log(int val);

@@ -123,6 +123,7 @@
     <ClCompile Include="Asserting.cpp" />
     <ClCompile Include="mat3.cpp" />
     <ClCompile Include="Random.cpp" />
+    <ClCompile Include="Transform2D.cpp" />
     <ClCompile Include="vec2.cpp" />
     <ClCompile Include="vec3.cpp" />
     <ClCompile Include="vec4.cpp" />
@@ -135,6 +136,7 @@
     <ClInclude Include="mat3.h" />
     <ClInclude Include="mat4.h" />
     <ClInclude Include="Random.h" />
+    <ClInclude Include="Transform2D.h" />
     <ClInclude Include="vec2.h" />
     <ClInclude Include="vec3.h" />
     <ClInclude Include="vec4.h" />
