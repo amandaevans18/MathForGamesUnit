@@ -25,8 +25,3 @@ vec2 transform2d::forward() const
 void transform2d::setForward(const vec2 & newFwd)
 {
 }
-
-mat3 transform2d::getTRSMatrix() const
-{
-	return tranStorage;
-}

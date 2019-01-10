@@ -1,10 +1,9 @@
 #pragma once
 #include"vec2.h"
-#include"mat3.h"
 
 struct transform2d
 {
-	mat3 tranStorage;
+	vec2 tranStorage;
 
 	transform2d();
 
@@ -18,6 +17,4 @@ struct transform2d
 	void lookAt(const transform2d &target);
 	vec2 forward() const;
 	void setForward(const vec2 &newFwd);
-
-	mat3 getTRSMatrix() const;
 };
