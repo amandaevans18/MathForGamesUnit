@@ -18,41 +18,55 @@ vec3::vec3(float _x, float _y, float _z)
 
 float vec3::magnitude() const
 {
-	return 0.0f;
+	return sqrt(pow(x, 2) + pow(z, 2) + pow(y, 2));
 }
 
 float vec3::dot(const vec3 & rhs) const
 {
-	return (x*rhs.x)+(y*rhs.y)+(z*rhs.z);
+	return ((x*rhs.x)+(y*rhs.y)+(z*rhs.z));
 }
 
-vec3 vec3::cross(const vec3 & rhs) const
+vec3 vec3::cross(const vec3 &rhs) const
 {
-	vec3 temp;
-	temp.x = (y * rhs.z) - (z * rhs.y);
-	temp.y = (z * rhs.x) - (x * rhs.z);
-	temp.z = (x * rhs.y) - (y * rhs.x);
-	return ;
+
+	 (y * rhs.z) - (z * rhs.y);
+	 (z * rhs.x) - (x * rhs.z);
+	 (x * rhs.y) - (y * rhs.x);
+	
+	return *this;
 }
 
 vec3 & vec3::normalize()
 {
-	// TODO: insert return statement here
+	vec3 temp(x, y,z);
+	float tempMag = temp.magnitude();
+	temp.x /= tempMag;
+	temp.y /= tempMag;
+	temp.z /= tempMag;
+	return temp;
+	
 }
 
-vec3 vec3::getNormalised()
+vec3 vec3::getNormalized()
 {
-	return vec3();
+	float tempMag = magnitude();
+	x /= tempMag;
+	y /= tempMag;
+	z /= tempMag;
+	return *this;
 }
 
 vec3 & vec3::scale(const vec3 & rhs)
 {
-	// TODO: insert return statement here
+	x *= rhs.x;
+	y *= rhs.y;
+	z *= rhs.z;
+	return *this;
 }
 
 vec3 vec3::getScaled(const vec3 & rhs) const
 {
-	return vec3();
+	return { x * rhs.x, y * rhs.y, z * rhs.z };
 }
 
 vec3 vec3::operator+(const vec3 & rhs) const

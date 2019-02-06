@@ -1,7 +1,11 @@
 #include "mat3.h"
-
+#include <cmath>
 mat3::mat3()
 {
+	for (int i = 0; i < 9; i++)
+	{
+		m[i] = 0.0f;
+	}
 }
 
 mat3::mat3(float * ptr)
@@ -30,11 +34,7 @@ mat3::mat3(float _m1, float _m2, float _m3, float _m4, float _m5, float _m6, flo
 
 mat3::operator float*()
 {
-	if (this != nullptr)
-	{
-		return *this;
-	}
-	return nullptr;
+	return &m1;
 }
 
 vec3 & mat3::operator[](const int index)
@@ -63,7 +63,20 @@ mat3 mat3::operator*(const mat3 & rhs) const
 
 mat3 & mat3::operator*=(const mat3 & rhs)
 {
-	set((*this * rhs));
+	mat3 tM = rhs.getTranspose();
+	
+
+	m[0] = xAxis.dot(tM.xAxis);
+	m[1] = xAxis.dot(tM.yAxis);
+	m[2] = xAxis.dot(tM.zAxis);
+	m[3] = yAxis.dot(tM.xAxis);
+	m[4] = yAxis.dot(tM.yAxis);
+	m[5] = yAxis.dot(tM.zAxis);
+	m[6] = zAxis.dot(tM.xAxis);
+	m[7] = zAxis.dot(tM.yAxis);
+	m[8] = zAxis.dot(tM.zAxis);
+
+
 	return *this;
 }
 
@@ -125,12 +138,18 @@ void mat3::set(float * ptr)
 {
 	if (ptr != nullptr)
 	{
-		for (int i = 0; i < sizeof(ptr); i++)
-		{
-			m[i] = ptr[i];
-		}
+		m1 = ptr[0];   
+		m2 = ptr[1];  
+		m3 = ptr[2];   
+		m4 = ptr[3];
+		m5 = ptr[4];  
+		m6 = ptr[5];   
+		m7 = ptr[6];   
+		m8 = ptr[7];
+		m9 = ptr[8];   
 	}
 }
+
 
 void mat3::transpose()
 {
@@ -159,30 +178,72 @@ mat3 mat3::getTranspose() const
 mat3 mat3::translation(float x, float y)
 {
 
-	return mat3();
+	mat3 tMat;
+	tMat.m1 = 1;
+	tMat.m3 = x;
+	tMat.m5 = 1;
+	tMat.m9 = 1;
+	tMat.m6 = y;
+	return tMat;
 }
 
 mat3 mat3::translation(const vec2 & vec)
 {
-	return mat3();
+	mat3 tMat;
+	tMat.m3 = vec.x;
+	tMat.m1 = 1;
+	tMat.m6 = vec.y;
+	tMat.m5 = 1;
+	tMat.m9 = 1;
+	return tMat;
 }
 
 mat3 mat3::rotation(float rot)
 {
-	return mat3();
+	mat3 rotMat;
+	if (rot != 0.0f)
+	{
+
+		rotMat.m1 = cos(rot);
+		rotMat.m4 = sin(rot);
+		rotMat.m2 = -sin(rot);
+		rotMat.m2 = cos(rot);
+		rotMat.m9 = 1;
+	}
+	else
+	{
+		 rotMat.identity();
+	}
+	return rotMat;
 }
 
 mat3 mat3::scale(float xScale, float yScale)
 {
-	return mat3();
+	mat3 sMat;
+	sMat.m1 = xScale;
+	sMat.m5 = yScale;
+	sMat.m9 = 1;
+	return sMat;
 }
 
 vec3 mat3::operator*(const vec3 & rhs) const
 {
-	return vec3();
+	vec3 tVec;
+	tVec.x = xAxis.dot(rhs);
+	tVec.y = yAxis.dot(rhs);
+	tVec.z = zAxis.dot(rhs);
+
+	return tVec;
 }
 
 vec2 mat3::operator*(const vec2 & rhs) const
 {
+	vec3 rhs3;
+	rhs3.x = rhs.x;
+	rhs3.y = rhs.y;
+	rhs3.z = 1.0f;
+	vec2 tVec;
+	tVec.x = xAxis.dot(rhs3);
+	tVec.y = yAxis.dot(rhs3);
 	return vec2();
 }

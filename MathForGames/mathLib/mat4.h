@@ -1,6 +1,6 @@
 #pragma once
-#include"vec3.h"
 #include"vec4.h"
+#include "mat3.h"
 struct mat4
 {
 public:
@@ -11,7 +11,7 @@ public:
 			vec4 xAxis;
 			vec4 yAxis;
 			vec4 zAxis;
-			vec4 wAxis;
+			vec4 tAxis;
 		};
 		vec4 axis[4];
 		struct
@@ -43,7 +43,7 @@ public:
 	operator float *();
 
 	// returns vec3 objects when accessing by subscript operator
-	vec3 &operator[](const int index);
+	vec4 &operator[](const int index);
 
 	// concatenates two matrices together and returns the result
 	mat4  operator*(const mat4 &rhs) const;
@@ -73,5 +73,16 @@ public:
 	// returns a transposed copy of the matrix
 	mat4 getTranspose() const;
 
-	mat4 getInverse() const;
+	static mat4 translation(float x, float y, float z);
+	
+	static mat4 translation(const vec3 &vec);
+	
+	static mat4 rotation(float rot, int axis);
+	
+	static mat4 scale(float xScale, float yScale, float zScale);
+	
+	vec4 operator*(const vec4 &rhs) const;
+	
+	
+	mat4 setRotation(float rot, int axis);
 };

@@ -17,7 +17,7 @@ vec2::vec2(float _x, float _y)
 
 float vec2::magnitude() const
 {
-	return 0.0f;
+	return sqrt(pow(x, 2) + pow(y, 2));
 }
 
 float vec2::dot(const vec2 & rhs) const
@@ -27,17 +27,26 @@ float vec2::dot(const vec2 & rhs) const
 
 vec2 & vec2::normalize()
 {
-	// TODO: insert return statement here
+	float magnVar = magnitude();
+	x /= magnVar;
+	y /= magnVar;
+	return *this;
 }
 
 vec2 vec2::getNormalized() const
 {
-	return vec2();
+	vec2 temp(x, y);
+	float magnVar = temp.magnitude();
+	temp.x /= magnVar;
+	temp.y /= magnVar;
+	return temp;
 }
 
 vec2 & vec2::scale(const vec2 & rhs)
 {
-	// TODO: insert return statement here
+	x *= rhs.x;
+	y *= rhs.y;
+	return *this;
 }
 
 vec2 vec2::getScaled(const vec2 & rhs) const
@@ -46,19 +55,12 @@ vec2 vec2::getScaled(const vec2 & rhs) const
 	return temp;
 }
 
-vec2 vec2::getPerpCW() const
-{
-	return vec2();
-}
-
-vec2 vec2::getPerpCCW() const
-{
-	return vec2();
-}
 
 float vec2::angleBetween(const vec2 & rhs) const
 {
-	return 0.0f;
+	vec2 normalize = getNormalized();
+	vec2 rhs_normalize = rhs.getNormalized();
+	return acos(normalize.dot(rhs_normalize));
 }
 
 

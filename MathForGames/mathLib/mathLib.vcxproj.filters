@@ -27,16 +27,13 @@
     <ClCompile Include="vec4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Asserting.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Random.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="mat3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Transform2D.cpp">
+    <ClCompile Include="Transform.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="mat4.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -71,7 +68,7 @@
     <ClInclude Include="mat4.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Transform2D.h">
+    <ClInclude Include="Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

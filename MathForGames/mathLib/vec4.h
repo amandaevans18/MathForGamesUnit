@@ -4,17 +4,17 @@
 struct vec4
 {
 
-	float x, y, z, w;
+	float x, y, z, t;
 
 	vec4();
-	vec4(float x, float y, float z, float w);
+	vec4(float _x, float _y, float _z, float _t);
 
 	float magnitude() const;
 	float dot(const vec4 &rhs) const;
 	vec4 cross(const vec4 &rhs) const;
 
 	vec4 &normalize();
-	vec4 getNormalised();
+	vec4 getNormalized();
 
 	vec4 &scale(const vec4 &rhs);
 	vec4 getScaled(const vec4 &rhs) const;
