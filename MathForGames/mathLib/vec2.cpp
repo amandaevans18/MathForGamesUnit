@@ -3,7 +3,6 @@
 #include<cmath>
 
 #ifdef RAYLIB_H
-//operator Vector2();
 vec2(Vector2 vec)
 {
 	x = vec.x;
@@ -82,6 +81,12 @@ float vec2::angleBetween(const vec2 & rhs) const
 	return acos(normalize.dot(rhs_normalize));
 }
 
+vec2 vec2::operator-() const
+{
+	vec2 temp(-x, -y);
+	return temp;
+}
+
 
 vec2 vec2::operator+(const vec2 & rhs) const
 {
@@ -94,6 +99,18 @@ vec2 vec2::operator-(const vec2 & rhs) const
 	return { x - rhs.x, y - rhs.y };
 }
 
+vec2 vec2::operator*(const float rhs) const
+{
+	vec2 temp(x, y);
+	temp.x *= rhs;
+	temp.y *= rhs;
+	return temp;
+}
+
+vec2 operator*(const float lhs, const vec2 & rhs)
+{
+	return rhs * lhs;
+}
 vec2 & vec2::operator+=(const vec2 & rhs)
 {
 	x += rhs.x;
@@ -172,7 +189,4 @@ vec2::operator const float*() const
 }
 
 
-vec2 operator*(const float lhs, const vec2 & rhs)
-{
-	return { rhs.x * lhs, rhs.y * lhs };
-}
+

@@ -30,11 +30,20 @@ void transform2d::lookAt(vec2 &target)
 }
 vec2 transform2d::forward() const
 {
-	return vec2(cos(DEG_TO_RAD * localRot), sin(DEG_TO_RAD * localRot)).getNormalized();
+	vec2 fwd;
+	fwd.x = cos(localRot);
+	fwd.y = sin(localRot);
+	fwd.normalize();
+	fwd.dot(localPos);
+	return fwd;
 }
 void transform2d::setForward(const vec2 &newFwd)
 {
-	localRot = atan2(newFwd.y, newFwd.x);
+	vec2 temp;
+	temp = newFwd;
+	temp -= localPos;
+	temp.normalize();
+	localRot = atan(temp.y / temp.x);
 }
 mat3 transform2d::getTRSMatrix() const
 {

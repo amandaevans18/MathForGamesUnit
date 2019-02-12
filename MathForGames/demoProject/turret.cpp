@@ -8,7 +8,7 @@ turret::turret(transform2d * _parent)
 	sourceRec = { 0, 0, 12, 30 };
 	width = 12.0f;
 	height = 30.0f;
-	text = LoadTexture("Resources/Using/tankDark_barrel3_outline.png");
+	text = LoadTexture("Resources/specialBarrel5_outline.png");
 	transform.localPos = { 0, 0 };
 	transform.setParent(_parent);
 	transform.localScale = { 1, 1 };

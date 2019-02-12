@@ -3,10 +3,12 @@
 #include "mat3.h"
 #include <vector>
 
-
 struct transform2d
 {
-	const double DEG_TO_RAD = PI / 180;
+private:
+	float _PI = 3.14159;
+	double DEG_TO_RAD = _PI / 180;
+public:
 	transform2d();
 	transform2d(vec2 pos, float rot, vec2 scale);
 

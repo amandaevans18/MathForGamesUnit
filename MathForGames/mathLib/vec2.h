@@ -1,5 +1,4 @@
 #pragma once
-#include "utils.h"
 #include<vector>
 //anything w/out comments still needs to be completed
 struct vec2
@@ -28,11 +27,15 @@ vec2 getScaled(const vec2 &rhs) const;
 //Gets the angle between vector
 float angleBetween(const vec2 &rhs) const;
 
+vec2 operator-() const;
+
 //Operator to add a vec2 to another vec2 ,returns a vec2
 vec2 operator+(const vec2 &rhs) const;
 
 //Operator to subtract a vec2 from another vec2 ,returns a vec2
 vec2 operator-(const vec2 &rhs) const;
+
+vec2 operator*(const float rhs) const;
 
 //Operator plus equals shortcut that adds and sets a vec2 with another vec2 ,returns a vec2
 vec2 &operator+=(const vec2 &rhs);
@@ -57,7 +60,6 @@ operator float *();
 vec2(const vec2 &vec);
 
 vec2 operator=(const vec2 &rhs);
-
 
 
 };

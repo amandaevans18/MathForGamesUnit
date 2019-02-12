@@ -1,5 +1,4 @@
 #pragma once
-#include "utils.h"
 
 struct vec3
 {

@@ -8,7 +8,7 @@ tank::tank()
 	sourceRec = { 0, 0, 38, 36 };
 	width = 38.0f;
 	height = 36.0f;
-	text = LoadTexture("Resources/Using/tankBody_green.png");
+	text = LoadTexture("Resources/tankBody_darl_outline.png");
 	velocity = { 0, 0 };
 	transform.localPos = { 400.0f, 225.0f };
 	transform.localScale = { 1, 1 };
@@ -30,7 +30,7 @@ void tank::update(float deltaTime)
 {
 	if (IsKeyDown(KEY_W))
 	{
-		velocity = transform.forward() * 200 * deltaTime;
+		velocity = (transform.forward() * 200 * deltaTime);
 	}
 	else if (IsKeyDown(KEY_S))
 	{
