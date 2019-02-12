@@ -4,6 +4,7 @@
 struct mat3
 {
 public:
+	float THRESHOLD = .25;
 	union
 	{
 		struct

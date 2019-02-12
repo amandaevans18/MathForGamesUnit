@@ -3,7 +3,7 @@
 //anything w/out comments still needs to be completed
 struct vec2
 {
-	float const THRESHOLD = .5;
+	float const THRESHOLD = .25;
 	float x, y;
 
 	vec2();
@@ -43,22 +43,14 @@ vec2 &operator*=(const float rhs);
 vec2 &operator/=(const float rhs);
 
 //Operator used to compare a const float to another float (uses the THRESHOLD defined in vec2.lib) returns a bool
-bool operator==(const float rhs) const;
+bool operator==(const vec2 rhs) const;
 //Operator used to compare a const float to another float (uses the THRESHOLD defined in vec2.lib) returns a bool
-bool operator!=(const float rhs) const;
+bool operator!=(const vec2 rhs) const;
 
-//Operator to help negatively iterate ,returns a vec2.  
-vec2 operator--() const;
-
-// Operator to access the value at that index
-float &operator[](size_t idx);
-// Operator to access a const value at that index
-float operator[](size_t idx) const;
 
 //returns the reference to the varible
 operator const float *() const;
-
-};
+operator float *();
 
 #ifdef RAYLIB_H
 vec2(const Vector2 &vec)

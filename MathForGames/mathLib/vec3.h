@@ -44,9 +44,7 @@ struct vec3
 	//
 	bool operator!=(const vec3 &rhs) const;
 
-	vec3 operator--() const;
-
-
+	operator float *();
 	operator const float *() const;
 };
 

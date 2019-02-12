@@ -82,21 +82,21 @@ mat3 & mat3::operator*=(const mat3 & rhs)
 
 bool mat3::operator==(const mat3 & rhs) const
 {
-	for (int i = 0; i < sizeof(m); i++)
+	for (int i = 0; i < (sizeof(m) / sizeof(float)); i++)
 	{
-		if (m[i] != rhs.m[i])
+		if (m[i] - rhs.m[i] > THRESHOLD)
 		{
-			return false;
+			return true;
 		}
 	}
-	return true;
+	return false;
 }
 
 bool mat3::operator!=(const mat3 & rhs) const
 {
-	for (int i = 0; i < sizeof(m); i++) 
+	for (int i = 0; i < (sizeof(m)/sizeof(float)); i++) 
 	{
-		if (m[i] == rhs.m[i]) 
+		if (m[i] - rhs.m[i] < THRESHOLD)
 		{
 			return false;
 		}
@@ -106,19 +106,7 @@ bool mat3::operator!=(const mat3 & rhs) const
 
 mat3 mat3::identity()
 {
-	//there is a bettter way but for NOW just push threw that work yo also this doesnt work lmao
-	mat3 theIdent;
-	mat3 temp;
-	float identVal[9] = {1,0,0,0,1,0,0,0,1};
-	//set ident matrix to the ident vals and set temp to current mat vals
-	for (int i = 0; i < 9; i++)
-	{
-		theIdent.m[i] = identVal[i];
-	}
-	//mulitply
-	temp *= theIdent;
-	//*this *= theIdent;
-	return temp;
+	return mat3(1, 0, 0, 0, 1, 0, 0, 0, 1);
 }
 
 void mat3::set(float _m1, float _m2, float _m3, float _m4, float _m5, float _m6, float _m7, float _m8, float _m9)
@@ -228,22 +216,26 @@ mat3 mat3::scale(float xScale, float yScale)
 
 vec3 mat3::operator*(const vec3 & rhs) const
 {
-	vec3 tVec;
-	tVec.x = xAxis.dot(rhs);
-	tVec.y = yAxis.dot(rhs);
-	tVec.z = zAxis.dot(rhs);
-
-	return tVec;
+	vec3 temp;
+	for (int i = 0; i < 3; i++)
+	{
+		for (int j = 0; j < 3; j++)
+		{
+			temp[i] += mm[i][j] * rhs[j];
+		}
+	}
+	return temp;
 }
 
 vec2 mat3::operator*(const vec2 & rhs) const
 {
-	vec3 rhs3;
-	rhs3.x = rhs.x;
-	rhs3.y = rhs.y;
-	rhs3.z = 1.0f;
-	vec2 tVec;
-	tVec.x = xAxis.dot(rhs3);
-	tVec.y = yAxis.dot(rhs3);
-	return vec2();
+	vec2 temp;
+	for (int i = 0; i < 2; i++)
+	{
+		for (int j = 0; j < 2; j++)
+		{
+			temp[i] += mm[i][j] * rhs[j];
+		}
+	}
+	return temp;
 }

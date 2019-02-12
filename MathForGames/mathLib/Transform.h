@@ -40,21 +40,3 @@ private:
 	std::vector<transform2d *> children;    // vector containing pointers to all children
 
 };
-
-struct transform3d
-{
-	transform3d();
-
-	vec3  localPos;
-	vec3 localRot;
-	vec3  localScale;
-
-	void translate(const vec3 &offset);
-	void rotate(const float x, const float y, const float z);
-
-	void lookAt(const transform3d &target);
-	vec3 forward() const;
-	void setForward(const vec3 &newFwd);
-
-	mat4 getTRSMatrix() const;
-};

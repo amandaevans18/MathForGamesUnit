@@ -27,18 +27,17 @@ float vec2::dot(const vec2 & rhs) const
 
 vec2 & vec2::normalize()
 {
-	float magnVar = magnitude();
-	x /= magnVar;
-	y /= magnVar;
-	return *this;
-}
-
-vec2 vec2::getNormalized() const
-{
 	vec2 temp(x, y);
 	float magnVar = temp.magnitude();
 	temp.x /= magnVar;
 	temp.y /= magnVar;
+	return temp;
+}
+
+vec2 vec2::getNormalized() const
+{
+	vec2 temp = *this;
+	temp.normalize();
 	return temp;
 }
 
@@ -51,7 +50,8 @@ vec2 & vec2::scale(const vec2 & rhs)
 
 vec2 vec2::getScaled(const vec2 & rhs) const
 {
-	vec2 temp(rhs.x, rhs.y);
+	vec2 temp(x*rhs.x, y*rhs.y);
+
 	return temp;
 }
 
@@ -66,62 +66,47 @@ float vec2::angleBetween(const vec2 & rhs) const
 
 vec2 vec2::operator+(const vec2 & rhs) const
 {
-	vec2 temp;
-	float y;
-	float x;
-	temp.x = rhs.x + x;
-	temp.y = rhs.y + y;
-	return temp;
+	return { x + rhs.x, y + rhs.y };
 }
 
 vec2 vec2::operator-(const vec2 & rhs) const
 {
-	vec2 temp;
-	float y;
-	float x;
-	temp.x = rhs.x - x;
-	temp.y = rhs.y - y;
-	return temp;
+
+	return { x - rhs.x, y - rhs.y };
 }
 
 vec2 & vec2::operator+=(const vec2 & rhs)
 {
-	vec2 temp;
-	temp.x = rhs.x + rhs.x;
-	temp.y = rhs.y + rhs.y;
-	return temp;
+	x += rhs.x;
+	y += rhs.y;
+	return *this;
 }
 
 vec2 & vec2::operator-=(const vec2 & rhs)
 {
-	vec2 temp;
-	temp.x = rhs.x - rhs.x;
-	temp.y = rhs.y - rhs.y;
-	return temp;
+	x -= rhs.x;
+	y -= rhs.y;
+	return *this;
 }
 
 vec2 & vec2::operator*=(const float rhs)
 {
-	vec2 temp;
-	temp.x = temp.x*rhs;
-	temp.y = temp.y*rhs;
-
-	return temp;
+	x *= rhs;
+	y *= rhs;
+	return *this;
 }
 
 vec2 & vec2::operator/=(const float rhs)
 {
-	vec2 temp;
-	temp.x = temp.x/rhs;
-	temp.y = temp.y/rhs;
-
-	return temp;
+	x /= rhs;
+	y /= rhs;
+	return *this;
 }
 
 
-bool vec2::operator==(const float rhs) const
+bool vec2::operator==(const vec2 rhs) const
 {
-	if (rhs - rhs*(FLT_EPSILON) <= THRESHOLD)
+	if ((x - rhs.x) < THRESHOLD && (y - rhs.y) < THRESHOLD)
 	{	
 		return true;
 	}
@@ -131,9 +116,9 @@ bool vec2::operator==(const float rhs) const
 	}
 }
 
-bool vec2::operator!=(const float rhs) const
+bool vec2::operator!=(const vec2 rhs) const
 {
-	if (rhs - rhs * (FLT_EPSILON) <= THRESHOLD)
+	if ((x - rhs.x) < THRESHOLD && (y - rhs.y) < THRESHOLD)
 	{
 		return false;
 	}
@@ -143,37 +128,9 @@ bool vec2::operator!=(const float rhs) const
 	}
 }
 
-
-vec2 vec2::operator--() const
+vec2::operator float *()
 {
-	vec2 temp;
-	temp.x = temp.x - temp.x;
-	temp.y = temp.y - temp.y;
-	return temp;
-}
-
-float & vec2::operator[](size_t idx)
-{
-	if(idx == 0) 
-	{
-		return x;
-	}
-	else if (idx == 1) 
-	{
-		return y;
-	}
-}
-
-float vec2::operator[](size_t idx) const
-{
-	if (idx == 0)
-	{
-		return x;
-	}
-	else if (idx == 1)
-	{
-		return y;
-	}
+	return &x;
 }
 
 
@@ -184,9 +141,5 @@ vec2::operator const float*() const
 
 vec2 operator*(const float lhs, const vec2 & rhs)
 {
-	vec2 temp(rhs.x, rhs.y);
-	temp.x = rhs.x * lhs;
-	temp.y = rhs.y * lhs;
-
-	return temp;
+	return { rhs.x * lhs, rhs.y * lhs };
 }
