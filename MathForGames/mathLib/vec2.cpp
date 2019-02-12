@@ -2,6 +2,25 @@
 #include <cfloat>
 #include<cmath>
 
+#ifdef RAYLIB_H
+//operator Vector2();
+vec2(Vector2 vec)
+{
+	x = vec.x;
+	y = vec.y;
+}
+vec2& operator=(const Vector2 &rhs)
+{
+	x = rhs.x;
+	y = rhs.y;
+	return *this;
+}
+operator Vector2()
+{
+	return { x , y };
+}
+#endif
+
 vec2::vec2()
 {
 	x = 0.0f;
@@ -133,11 +152,25 @@ vec2::operator float *()
 	return &x;
 }
 
+vec2::vec2(const vec2 & vec)
+{
+	x = vec.x;
+	y = vec.y;
+}
+
+vec2 vec2::operator=(const vec2 & rhs)
+{
+	x = rhs.x;
+	y = rhs.y;
+	return *this;
+}
+
 
 vec2::operator const float*() const
 {
 	return &x;
 }
+
 
 vec2 operator*(const float lhs, const vec2 & rhs)
 {

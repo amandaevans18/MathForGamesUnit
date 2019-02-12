@@ -141,25 +141,26 @@ void mat3::set(float * ptr)
 
 void mat3::transpose()
 {
-	mat3 temp;
-	//first col -> first row 
-	mm[0][0] = temp.mm[0][0];
-	mm[0][1] = temp.mm[1][0];
-	mm[0][2] = temp.mm[2][0];
-	//second col -> second row
-	mm[1][0] = temp.mm[0][1];
-	mm[1][1] = temp.mm[1][1];
-	mm[1][2] = temp.mm[2][1];
-	//third col -> third row
-	mm[2][0] = temp.mm[0][2];
-	mm[2][1] = temp.mm[1][2];
-	mm[2][2] = temp.mm[2][2];
+	set(getTranspose());
+	
 }
 
 mat3 mat3::getTranspose() const
 {
+
 	mat3 temp;
-	temp.transpose();
+	//first col -> first row 
+	temp.mm[0][0] = mm[0][0];
+	temp.mm[1][0] = mm[0][1];
+	temp.mm[2][0] = mm[0][2];
+	//second col -> second row
+	temp.mm[1][0] = mm[1][1];
+	temp.mm[1][1] = mm[1][1];
+	temp.mm[1][2] = mm[2][1];
+	//third col -> third row
+	temp.mm[2][0] = mm[0][2];
+	temp.mm[2][1] = mm[1][2];
+	temp.mm[2][2] = mm[2][2];
 	return temp;
 }
 
@@ -192,17 +193,13 @@ mat3 mat3::rotation(float rot)
 	if (rot != 0.0f)
 	{
 
-		rotMat.m1 = cos(rot);
-		rotMat.m4 = sin(rot);
-		rotMat.m2 = -sin(rot);
-		rotMat.m2 = cos(rot);
-		rotMat.m9 = 1;
+		return mat3(cos(rot), -sin(rot), 0, sin(rot), cos(rot), 0, 0, 0, 1);
 	}
 	else
 	{
-		 rotMat.identity();
+		return rotMat.identity();
 	}
-	return rotMat;
+
 }
 
 mat3 mat3::scale(float xScale, float yScale)

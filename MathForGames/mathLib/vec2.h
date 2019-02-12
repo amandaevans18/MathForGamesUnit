@@ -1,5 +1,6 @@
 #pragma once
 #include "utils.h"
+#include<vector>
 //anything w/out comments still needs to be completed
 struct vec2
 {
@@ -52,22 +53,13 @@ bool operator!=(const vec2 rhs) const;
 operator const float *() const;
 operator float *();
 
-#ifdef RAYLIB_H
-vec2(const Vector2 &vec)
-{
-	x = vec.x;
-	y = vec.y;
-}
 
-vec2 operator=(const Vector2 &rhs)
-{
-	x = rhs.x;
-	y = rhs.y;
-	return *this;
-}
+vec2(const vec2 &vec);
+
+vec2 operator=(const vec2 &rhs);
 
 
-#endif
+
 };
 
 vec2 operator*(const float lhs, const vec2 &rhs);
